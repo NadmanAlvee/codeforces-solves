@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
-int main()
-{
+int main(){
   int n, vote[3], sol_count = 0;
   cin >> n;
   while (n--){
