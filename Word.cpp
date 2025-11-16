@@ -14,7 +14,7 @@ int main(){
         }
     } else {
         for(char w : word){
-        				cout << (char)tolower(w);
+        		cout << (char)tolower(w);
         }
     }
 }
