@@ -1,11 +1,16 @@
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const getExe = new RegExp(".exe$", "i");
 let filterdFiles = [];
 
 function getExeFiles() {
   return new Promise((resolve, reject) => {
-    fs.readdir("./", (error, files) => {
+    fs.readdir(path.resolve(__dirname, "../"), (error, files) => {
       if (!error && files) {
         resolve(files.filter((file) => getExe.test(file)));
       } else {
@@ -16,6 +21,7 @@ function getExeFiles() {
 }
 
 filterdFiles = await getExeFiles();
+console.log("filterdFiles: ", filterdFiles);
 
 function deleteExeFiles(list) {
   const promises = list.map(
