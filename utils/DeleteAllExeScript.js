@@ -10,7 +10,7 @@ let filterdFiles = [];
 
 function getExeFiles() {
   return new Promise((resolve, reject) => {
-    fs.readdir(path.resolve(__dirname, "../"), (error, files) => {
+    fs.readdir(path.resolve(__dirname, "../800/"), (error, files) => {
       if (!error && files) {
         resolve(files.filter((file) => getExe.test(file)));
       } else {
@@ -27,7 +27,7 @@ function deleteExeFiles(list) {
   const promises = list.map(
     (file) =>
       new Promise((resolve, reject) => {
-        fs.unlink(file, (err) => {
+        fs.unlink(path.resolve(__dirname, "../800/", file), (err) => {
           if (err) {
             console.error("Failed to delete file:", file, err);
             return reject(err);
